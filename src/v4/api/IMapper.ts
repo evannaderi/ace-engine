@@ -14,7 +14,27 @@
     limitations under the License.
  *****************************************************************************/
 
-export class Config {
-    static DEBUG = false;
-    static helpRoot = "https://able.ibm.com/rules/archives";
+export type Bounds = {
+    left: number,
+    top: number,
+    width: number,
+    height: number
+}
+
+export interface IMapResult {
+    node: Node,
+    namespace: string,
+    role: string,
+    rolePath: string,
+    attributes: {
+        [key: string]: string
+    },
+    bounds?: Bounds
+}
+
+export interface IMapper {
+    reset(node: Node): void;
+    openScope(node: Node) : IMapResult[];
+    closeScope(node: Node) : IMapResult[];
+    getNamespace() : string;
 }

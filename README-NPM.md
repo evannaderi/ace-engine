@@ -1,32 +1,29 @@
 # accessibility-checker-engine
 
-For information on creating, modifying rules, see [README-RULES.md]
-
 ## Overview
 
-accessibility-checker-engine contains IBM accessibility rules and evaluation engine to help users to check their web pages to identify and report accessibility issues.
+`accessibility-checker-engine` is a DOM, rule-based engine for detecting issues in web applications. The engine is used by the [IBM Equal Access Accessibility Checker](https://www.ibm.com/able/toolkit/tools#develop) suite of tools. The rules and engine are fully written in JavaScript and can be injected directly into web pages and applications.
 
-## Install
+## Get the engine
 
-Please review [README.md](../README.md) on how to clone the source. Once the source code is cloned to your local environment, you can build the source code based on the requirements of your local environment.
-
-### build ace.js that can be used in a browser environment
-
-```bash
-$ cd accessibility-checker-engine
-$ npm install
-$ npm run build
+Install accessibility-checker-engine in a Node environment:
 ```
-This will build the ace.js in the dist directory.
+$ npm install --save-dev accessibility-checker-engine
+```
 
-### build ace-node.js that can be used in a NodeJS environment
+Use a CDN to access the engine in a browser environment:
+```
+<script src="https://unpkg.com/accessibility-checker-engine@latest/ace.js"></script>
+```
+
+## Quick start
+
+See [CodeSandbox Demo](https://codesandbox.io/s/accessibility-checker-engine-demo-r1k1k3?file=/index.html) for a more complete example.
 
 ```
-$ cd accessibility-checker-engine
-$ npm install
-$ npm run build-node
+const checker = new ace.Checker();
+const report = await checker.check(document, ["IBM_Accessibility"]);
 ```
-This will build the ace-node.js in the dist directory.
 
 ## API
 
@@ -154,7 +151,7 @@ You can use the wrapper method `checkDemo` in `ace` object, which is specificall
 * Navigate to a page or type the url to the page in Chrome browser
 * Open the developer tool in Chrome browser: click `Customize and Control Google Chrome` button, select `More Tools`, then select `Developer Tool`
 * Select `Console` tab to show command prompt
-* Open the `ace.js` you built in the build step in a text editor, select and copy all the content
+* Open `ace.js` select and copy all the content
 * Paste the content you copied to the command prompt in the developer tool, then press `Enter`
 * Type in the command prompt: `ace.checkDemo()`, then `Enter`
 
@@ -163,7 +160,7 @@ You can view the accessibility report for the page:
 
 ### Programmatic
 
-The following code snippet demonstrates how to use ACE to test a web page for accessibility in an embedded Chrome environment (`puppeteer`). See [accessibility-checker](../accessibility-checker) for a more complete tool for this environment.
+The following code snippet demonstrates how to use ACE to test a web page for accessibility in an embedded Chrome environment (`puppeteer`). See [accessibility-checker](https://www.npmjs.com/package/accessibility-checker) for a more complete tool for this environment.
 
 ```javascript
 (async () => {
@@ -205,11 +202,11 @@ The following code snippet demonstrates how to use ACE to test a web page for ac
 
 ### Browser extensions
 
-You can use the [accessibility-checker-extension](../accessibility-checker-extension) for Chrome or Firefox. The browser extensions integrate the accessibility web engine (ace.js) and formatted results into the browser developer tool to visually view the accessibility issues and the locations of violating components. For more information and instructions, please view [accessibility-checker-extensions](../accessibility-checker-extension).
+You can use the [accessibility-checker-extension](https://www.ibm.com/able/toolkit/tools/#develop) for Chrome or Firefox. The browser extensions integrate the accessibility web engine (ace.js) and formatted results into the browser developer tool to visually view the accessibility issues and the locations of violating components. For more information and instructions, please view [accessibility-checker-extensions](https://www.ibm.com/able/toolkit/tools/#develop).
 
 ### Integration with test frameworks
 
-You can use the [karma-accessibility-checker](../karma-accessibility-checker) to integrate accessibility web engine into [Karma](https://karma-runner.github.io/latest/index.html) or [Selenium](https://www.selenium.dev/) test framework. For more information and instructions, please view [karma-accessibility-checker](../karma-accessibility-checker).
+You can use the [karma-accessibility-checker](https://www.npmjs.com/package/karma-accessibility-checker) to integrate accessibility web engine into [Karma](https://karma-runner.github.io/latest/index.html) or [Selenium](https://www.selenium.dev/) test framework. For more information and instructions, please view [karma-accessibility-checker](https://www.npmjs.com/package/karma-accessibility-checker).
 
 ### Reporting bugs
 
