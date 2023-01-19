@@ -1,47 +1,46 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Shadow DOM</title>
+    <title>Sandbox</title>
     <meta charset="UTF-8" />
   </head>
+
   <body>
     <main>
-      The checker should flag errors on all three of the following checkboxes
-      <div id='div_1' style="background-color: black;">
-        <div id="shadowOpen"></div>
+      <h1>Test page</h1>
+      <div style="background-color: #4d4d4d;">
+        <div style="color: white;">
+          This does not fail
+        </div>
+      </div>
+      <div style="background: rgb(33, 33, 33);">
+        <div style="background-color: hsla(0, 0%, 100%, 0.2);">
+          <div style="color: white;">
+            This should not fail, but does
+          </div>
+        </div>
       </div>
     </main>
-    <script type="text/javascript">
-      let openShadow = document
-        .getElementById("shadowOpen")
-        .attachShadow({ mode: "open" });
-      let openDiv = document.createElement("div");
-      openDiv.setAttribute("style", "color:#dedede");
-      let openText = document.createTextNode("Open shadow");
-      openDiv.appendChild(openText);
-      openShadow.appendChild(openDiv);
-    </script>
-
     <script>
       UnitTest = {
         ruleIds: ["IBMA_Color_Contrast_WCAG2AA"],
         results: [
-          {
+        {
             "ruleId": "IBMA_Color_Contrast_WCAG2AA",
             "value": [
               "INFORMATION",
               "PASS"
             ],
             "path": {
-              "dom": "/html[1]/body[1]/main[1]",
-              "aria": "/document[1]/main[1]"
+              "dom": "/html[1]/body[1]/main[1]/h1[1]",
+              "aria": "/document[1]/main[1]/heading[1]"
             },
             "reasonId": "Pass_0",
             "message": "Rule Passed",
             "messageArgs": [
               "21.00",
-              16,
-              400,
+              32,
+              700,
               "#000000",
               "#ffffff",
               false,
@@ -57,17 +56,41 @@
               "PASS"
             ],
             "path": {
-              "dom": "/html[1]/body[1]/main[1]/div[1]/div[1]/#document-fragment[1]/div[1]",
+              "dom": "/html[1]/body[1]/main[1]/div[1]/div[1]",
               "aria": "/document[1]/main[1]"
             },
             "reasonId": "Pass_0",
             "message": "Rule Passed",
             "messageArgs": [
-              "15.61",
+              "8.45",
               16,
               400,
-              "#dedede",
-              "#000000",
+              "#ffffff",
+              "#4d4d4d",
+              false,
+              false
+            ],
+            "apiArgs": [],
+            "category": "Accessibility"
+          },
+          {
+            "ruleId": "IBMA_Color_Contrast_WCAG2AA",
+            "value": [
+              "INFORMATION",
+              "PASS"
+            ],
+            "path": {
+              "dom": "/html[1]/body[1]/main[1]/div[2]/div[1]/div[1]",
+              "aria": "/document[1]/main[1]"
+            },
+            "reasonId": "Pass_0",
+            "message": "Rule Passed",
+            "messageArgs": [
+              "8.40",
+              16,
+              400,
+              "#ffffff",
+              "#4d4d4d",
               false,
               false
             ],
