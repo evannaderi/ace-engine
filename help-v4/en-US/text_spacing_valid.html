@@ -44,24 +44,24 @@
 
 ### Why is this important?
 
-Alternative descriptions are important for users whose browsers do not support the `<object>` element or the media type of the object.
+End users need to be able to adjust text, word, and line spacing to make it easier to read.
+And when users make adjustments the content needs to still be fully usable and understandable (e.g. no truncation).
+Assistive technologies cannot adjust spacing when authors use the CSS `!important` attribute.
+
+Authors must ensure the content can be transformed (such as through user style sheets) to attain all of the following specific requirements without loss of content or functionality:
+* Line height (line spacing) to at least 1.5 times the font size
+* Spacing following paragraphs to at least 2 times the font size
+* Letter spacing (tracking) to at least 0.12 times the font size
+* Word spacing to at least 0.16 times the font size
 
 <!-- This is where the code snippet is injected -->
 <div id="locSnippet"></div>
 
 ### What to do
 
-* If the `<object>` element is a Java applet, video, or image, add a text description using the `title` attribute
-* **Or**, if the `<object>` element has a role of `application`, `document`, or `img`, add a text description using the `title`, `aria-label`, or `aria-labelledby` attribute
-
-For example:
-
-```
-<object classid="java:Press.class" width="500" height="500" title="Java applet: how temperature affects pressure.">
-<applet code="java:Press.class" width="500" height="500"> As temperature increases the velocity of the molecules in the balloon...
-</applet>
-</object>
-```
+* Use CSS to control spacing within a word, between words, and between lines
+* Avoid using the CSS `!important` style attribute that prevents users from adjusting the spacing
+* **Or**, provide a custom mechanism on the page to allow users to adjust the spacing
 
 </script></mark-down>
 <!-- End main panel -->
@@ -74,14 +74,18 @@ For example:
 
 ### About this requirement
 
-* [IBM 1.1.1 Non-text content](https://www.ibm.com/able/requirements/requirements/#1_1_1)
-* [WCAG technique H53](https://www.w3.org/WAI/WCAG21/Techniques/html/H53)
-* [Accessible Name and Description Computation](https://www.w3.org/TR/accname-1.2/)
+* [IBM 1.4.12 Text Spacing](https://www.ibm.com/able/requirements/requirements/#1_4_12)
+* [WCAG technique C35](https://www.w3.org/WAI/WCAG21/Techniques/css/C35)
+* [WCAG technique C36](https://www.w3.org/WAI/WCAG21/Techniques/css/C36)
+* [Design - Responsive reflow](https://www.ibm.com/able/toolkit/design/visual/#responsive-reflow)
+* [Verify - Resize and re-space text](https://www.ibm.com/able/toolkit/verify/manual/#resizetext)
+* [Verify - Reflow text](https://www.ibm.com/able/toolkit/verify/manual/#reflow)
 
 ### Who does this affect?
 
-* People using a screen reader, including blind, low vision and neurodivergent people
-* People using text-based browsers (e.g., Lynx) or audio interfaces
+ * People using a screen reader, including blind, low vision and neurodivergent people
+ * People with reading disabilities
+ * People who view interfaces using an adapted layout
 
 </script></mark-down>
 <!-- End side panel -->
