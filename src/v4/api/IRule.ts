@@ -14,11 +14,12 @@
     limitations under the License.
  *****************************************************************************/
 
-import { eGuidelineCategory } from "./IGuideline";
+import { eGuidelineCategory, eGuidelineType } from "./IGuideline";
 import { IMapResult } from "./IMapper";
 import { NlsMap as NlsMapNew, HelpMap as HelpMapNew, IEngine as IEngineNew } from "./IEngine";
 import { Report as ReportNew } from "./IReport";
 import { eToolkitLevel as eToolkitLevelNew } from "./IGuideline"
+import { Bounds } from "./IBounds";
 
 export enum eRuleConfidence {
     PASS = "PASS",
@@ -99,12 +100,7 @@ export type Issue = RuleResult & {
 
     ruleTime: number,
     message: string,
-    bounds?: {
-        top: number,
-        left: number,
-        width: number,
-        height: number
-    },
+    bounds?: Bounds,
     snippet: string
 }
 
@@ -198,26 +194,14 @@ export type IEngine = IEngineNew;
 /**
  * @deprecated See ./IGuideline
  */
-export enum eToolkitLevel {
-    LEVEL_ONE = "1",
-    LEVEL_TWO = "2",
-    LEVEL_THREE = "3",
-    LEVEL_FOUR = "4"
-}
+export { eToolkitLevel } from "./IGuideline";
 
 /**
  * @deprecated See ./IGuideline:eGuidelineCategory
  */
-export enum eRuleCategory {
-    ACCESSIBILITY = "Accessibility",
-    DESIGN = "Design",
-    OTHER = "Other"
-}
+export { eGuidelineCategory as eRuleCategory } from "./IGuideline";
 
 /**
  * @deprecated See ./IGuideline:eGuidelineType
  */
-export enum eRulesetType {
-    DEFAULT = "default",
-    EXTENSION = "extension"
-}
+export { eGuidelineType as eRulesetType } from "./IGuideline";
