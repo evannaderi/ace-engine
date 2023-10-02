@@ -14,15 +14,17 @@
     limitations under the License.
  *****************************************************************************/
 
-let simNls = {
-    "LinkRule": ["[link]"],
-    "TextRule": ["{0}"],
-    "ImgRule": ["{0}"],
-    "Button": ["{0}"],
-    "ButtonEnd": ["[button]"],
-    "Headings": ["[Heading level {0}]"],
-    "Textbox": ["{0} {1}[edit]"],
-    "EndBlock": ["\n"],
-    "EndLink": ["\n"]
+import { Issue } from "./IRule"
+
+export type Report = {
+    results: Issue[],
+    numExecuted: number,
+    ruleTime: number,
+    // This may be undefined for a filtered report
+    totalTime?: number,
+    nls?: {
+        [ruleId: string]: {
+            [reasonId: string]: string
+        }
+    }
 }
-export { simNls }
